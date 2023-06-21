@@ -22,21 +22,23 @@ public class WebTables extends AbstractPageObject {
     private final By salaryField = new By.ByXPath("//input[@id='salary']");
     private final By departmentField = new By.ByXPath("//input[@id='department']");
     private final By submitButton = new By.ByXPath("//button[@id='submit']");
+    private final By modalForm = new By.ByXPath("//div[@id='registration-form-modal']");
+    private final By newRecordAdded = new By.ByXPath("//div[text()='Test']");
 
+    public By getNewRecordAdded() {
+        return newRecordAdded;
+    }
 
+    public By getModalForm() {
+        return modalForm;
+    }
 
-//    private String firstName = generateRandomChars("abc", 5);
-//    private String lastName = generateRandomChars("abc", 5);
-
-
-    public void clickAddButton(){
+    public void clickAddButton() {
         getElement(buttonAddElement).click();
-
 
     }
 
-
-    public void fillForm(String firstName, String lastName, String email, int age, int salary, String department ){
+    public void fillForm(String firstName, String lastName, String email, int age, int salary, String department) {
 
         getElement(firstNameField).sendKeys(firstName);
         getElement(lastNameField).sendKeys(lastName);
@@ -45,10 +47,6 @@ public class WebTables extends AbstractPageObject {
         getElement(salaryField).sendKeys(String.valueOf(salary));
         getElement(departmentField).sendKeys(department, Keys.RETURN);
 
-
-
     }
-
-
 
 }

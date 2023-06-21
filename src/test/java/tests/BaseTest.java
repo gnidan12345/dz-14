@@ -9,19 +9,18 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
     protected WebDriver driver;
 
-@BeforeMethod
-    public void setup(){
-    WebDriverManager.chromedriver().setup();
-    driver = new ChromeDriver();
-    driver.manage().window().maximize();
+    @BeforeMethod
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
-}
+    }
 
-
-@AfterMethod
-    public void cleanup(){
-    driver.close();
-    driver.quit();
-}
+    @AfterMethod
+    public void cleanup() {
+        driver.close();
+        driver.quit();
+    }
 
 }

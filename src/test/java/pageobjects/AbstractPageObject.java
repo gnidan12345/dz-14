@@ -24,48 +24,48 @@ public class AbstractPageObject {
     }
 
 
-    public WebElement getElement(By by, int waitForSeconds ){
+    public WebElement getElement(By by, int waitForSeconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(waitForSeconds))
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
 
-    public WebElement getElement(By by){
+    public WebElement getElement(By by) {
         return new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT))
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-    public List <WebElement> getelements(By by, int waitForSeconds){
+    public List<WebElement> getelements(By by, int waitForSeconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(waitForSeconds))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
     }
 
 
-    public List <WebElement> getelements (By by){
+    public List<WebElement> getelements(By by) {
         return new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 
     }
 
 
-    public void waitTillAppears(By by, int waitForSeconds){
+    public void waitTillAppears(By by, int waitForSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 
     }
 
-    public void waitTillAppears(By by){
+    public void waitTillAppears(By by) {
         new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT))
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
 
-    public void waitTillDisappear(By by, int waitForSeconds){
-         new WebDriverWait(driver, Duration.ofSeconds(waitForSeconds))
+    public void waitTillDisappear(By by, int waitForSeconds) {
+        new WebDriverWait(driver, Duration.ofSeconds(waitForSeconds))
                 .until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
 
-    public void waitTillDisappear(By by){
+    public void waitTillDisappear(By by) {
         new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT)).until(
                 ExpectedConditions.invisibilityOfElementLocated(by));
     }
@@ -82,6 +82,10 @@ public class AbstractPageObject {
     }
 
 
+    public WebElement scrollToElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        return element;
+    }
 
 
 }
