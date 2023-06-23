@@ -2,6 +2,7 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class ButtonsPage extends AbstractPageObject {
 
@@ -10,22 +11,19 @@ public class ButtonsPage extends AbstractPageObject {
     private final By dynamicMessage = new By.ByXPath("//*[@id='dynamicClickMessage']");
 
     public void getClickMeText() {
-        driver.findElement(clickMeElement).getText();
+        getElement(clickMeElement).getText();
     }
 
     public void clickClickMe() {
-        driver.findElement(clickMeElement).click();
+        getElement(clickMeElement).click();
     }
 
-
-    public By getDynamicMessage() {
-        return dynamicMessage;
+    public WebElement getDynamicMessage() {
+        return getElement(dynamicMessage);
     }
 
     public ButtonsPage(WebDriver driver) {
         super(driver);
         driver.get("https://demoqa.com/buttons");
     }
-
-
 }

@@ -16,11 +16,10 @@ public class ElementsTest extends BaseTest {
 
     public void testElementsPage() {
         ElementsPage elementsPage = new ElementsPage(driver);
-        boolean isDisplayed = elementsPage.getLeftPannel();
         elementsPage.getMenuItems();
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://demoqa.com/elements");
-        Assert.assertTrue(isDisplayed, "The left pannel is not displayed");
+        Assert.assertTrue(elementsPage.getLeftPannel().isDisplayed(), "The left pannel is not displayed");
 
     }
 
@@ -36,12 +35,10 @@ public class ElementsTest extends BaseTest {
     public void testButtons() {
         ElementsPage elementsPage = new ElementsPage(driver);
 
-        elementsPage.scrollToElement(driver.findElement(elementsPage.getButtonsElement()));
-
-        elementsPage.clickButtons();
+        elementsPage.clickOnButtonsMenuElement();
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://demoqa.com/buttons");
-        Assert.assertEquals(driver.findElement(elementsPage.getClickMeElement()).getText(), "Click Me");
+        Assert.assertEquals(elementsPage.getClickMeElement().getText(), "Click Me");
 
     }
 }

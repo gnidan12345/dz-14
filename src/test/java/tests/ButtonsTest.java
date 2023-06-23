@@ -16,7 +16,7 @@ public class ButtonsTest extends BaseTest {
 
         page.clickClickMe();
 
-        Assert.assertEquals(driver.findElement(page.getDynamicMessage()).getText(), "You have done a dynamic click");
+        Assert.assertEquals(page.getDynamicMessage().getText(), "You have done a dynamic click");
 
     }
 }

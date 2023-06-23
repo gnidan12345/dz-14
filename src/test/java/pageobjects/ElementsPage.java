@@ -27,33 +27,34 @@ public class ElementsPage extends AbstractPageObject {
         driver.get(URL);
     }
 
-    public By getClickMeElement() {
-        return clickMeElement;
+    public WebElement getClickMeElement() {
+        return getElement(clickMeElement);
     }
 
-    public By getButtonsElement() {
-        return buttonsElement;
+    public WebElement getButtonsElement() {
+        return getElement(buttonsElement);
     }
 
-    public boolean getLeftPannel() {
-        return getElement(leftPannel).isDisplayed();
+    public WebElement getLeftPannel() {
+        return getElement(leftPannel);
     }
 
     public List<WebElement> getMenuItems() {
         return getelements(menuItems);
     }
 
-    List<WebElement> MenuItems = new ArrayList<>();
-
-    List<String> menuItemsText = MenuItems.stream().map(WebElement::getText).toList();
 
     public List<String> getMenuItemsText() {
-        return menuItemsText;
+        return getelements(menuItems).stream().map(WebElement::getText).toList();
     }
 
     public ButtonsPage clickButtons() {
         getElement(buttonsElement, 5).click();
         return new ButtonsPage(driver);
+    }
+
+    public void clickOnButtonsMenuElement() {
+        scrollToElement(getElement(buttonsElement)).click();
     }
 
 }

@@ -19,7 +19,7 @@ public class FormTest extends BaseTest {
         webTables.waitTillAppears(webTables.getModalForm());
         webTables.fillForm("Test", lastName, "test@gmail.com", 25, 2500, "DP01");
 
-        Assert.assertEquals(driver.findElement(webTables.getNewRecordAdded()).getText(), "Test");
+        Assert.assertEquals(webTables.getNewRecordAdded().getText(), "Test");
 
     }
 }

@@ -3,6 +3,7 @@ package pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class WebTables extends AbstractPageObject {
 
@@ -13,7 +14,6 @@ public class WebTables extends AbstractPageObject {
     }
 
     private final By buttonAddElement = new By.ByXPath("//button[@id='addNewRecordButton']");
-
     private final By formHeader = new By.ByXPath("//div[@id='registration-form-modal']");
     private final By firstNameField = new By.ByXPath("//input[@id='firstName']");
     private final By lastNameField = new By.ByXPath("//input[@id='lastName']");
@@ -25,12 +25,12 @@ public class WebTables extends AbstractPageObject {
     private final By modalForm = new By.ByXPath("//div[@id='registration-form-modal']");
     private final By newRecordAdded = new By.ByXPath("//div[text()='Test']");
 
-    public By getNewRecordAdded() {
-        return newRecordAdded;
+    public WebElement getNewRecordAdded() {
+        return getElement(newRecordAdded);
     }
 
-    public By getModalForm() {
-        return modalForm;
+    public WebElement getModalForm() {
+        return getElement(modalForm);
     }
 
     public void clickAddButton() {

@@ -48,26 +48,26 @@ public class AbstractPageObject {
     }
 
 
-    public void waitTillAppears(By by, int waitForSeconds) {
+    public void waitTillAppears(WebElement element, int waitForSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT))
-                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+                .until(ExpectedConditions.visibilityOf(element));
 
     }
 
-    public void waitTillAppears(By by) {
+    public void waitTillAppears(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT))
-                .until(ExpectedConditions.presenceOfElementLocated(by));
+                .until(ExpectedConditions.visibilityOf(element));
     }
 
 
-    public void waitTillDisappear(By by, int waitForSeconds) {
+    public void waitTillDisappear(WebElement element, int waitForSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(waitForSeconds))
-                .until(ExpectedConditions.invisibilityOfElementLocated(by));
+                .until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitTillDisappear(By by) {
+    public void waitTillDisappear(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT)).until(
-                ExpectedConditions.invisibilityOfElementLocated(by));
+                ExpectedConditions.visibilityOf(element));
     }
 
     public static String generateRandomChars(String candidateChars, int length) {
@@ -81,11 +81,9 @@ public class AbstractPageObject {
         return sb.toString();
     }
 
-
     public WebElement scrollToElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         return element;
     }
-
 
 }
